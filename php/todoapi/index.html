@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <center><h1>API using AXIOS</h1></center>
+<div id="user"></div>
+
+
+
+<script>
+    const API_URL = 'http://localhost/PLAIN%20PHP/API/user';
+    const userElement = document.querySelector('.user');
+
+    async function getUser(){
+        
+        const response = await fetch(API_URL);
+        var json = await response.json();
+        console.log(json);
+       json.forEach(element => {
+        document.getElementById("user").innerHTML+="Nama: "+ element.name + "<br>Deskripsi: " + element.description + "<br><br>";
+        });
+       
+    }
+
+    getUser();
+</script>
+</body>
+</html>
